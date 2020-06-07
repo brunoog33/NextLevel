@@ -10,7 +10,7 @@ class PointsController {
             .map(item => Number(item.trim()));
         
         const points = await knex('points')
-            .join('point_items', 'point.id', '=', 'point_items.point_id')
+            .join('point_items', 'points.id', '=', 'point_items.point_id')
             .whereIn('point_items.item_id', parsedItems)
             .where('city', String(city))
             .where('uf', String(uf))
@@ -59,7 +59,7 @@ class PointsController {
             longitude,
             city,
             uf,
-            image: 'image-fake',
+            image: 'https://mhmcdn.ynvolve.net/?w=750&h=450&quality=90&clipping=landscape&url=//manualdohomemmoderno.com.br/files/2018/03/mercado-700x400.jpg&format=webp&hash=4dbf12ff263d563e489ba16388ed82d26dc5a4fd1e327f5c1b538accf704a345',
         }
     
         const insertedIds = await trx('points').insert(point);
@@ -76,6 +76,8 @@ class PointsController {
         await trx('point_items').insert(pointsItems);
 
         await trx.commit();
+
+        console.log(point_id);
     
         return response.json({ 
             id: point_id,
