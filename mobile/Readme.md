@@ -14,3 +14,12 @@ expo install constants
 ### Comando para ler svg
 expo install react-native-svg
 
+### Comando para enviar email
+https://docs.expo.io/versions/latest/sdk/mail-composer/
+
+### Para enviar mensagem de whatsapp
+Liking do próprio react
+
+### SElect para react native
+npm install react-native-picker-select
+
